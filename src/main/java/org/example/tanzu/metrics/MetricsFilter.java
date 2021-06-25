@@ -54,10 +54,14 @@ public class MetricsFilter implements Filter {
 		final Sample sample = Timer.start(this.meterRegistry);
 		try {
 			filterChain.doFilter(request, response);
-			sample.stop(this.meterRegistry, this.timerBuilder(request, response, null));
+			
+			sample.stop(this.timerBuilder(request, response, null).register(this.meterRegistry));
+			//sample.stop(this.meterRegistry, this.timerBuilder(request, response, null));
 		}
 		catch (IOException | RuntimeException | ServletException e) {
-			sample.stop(this.meterRegistry, this.timerBuilder(request, response, e));
+			//sample.stop(this.meterRegistry, this.timerBuilder(request, response, e));
+
+			sample.stop(this.timerBuilder(request, response, null).register(this.meterRegistry));
 			throw e;
 		}
 	}
