@@ -35,4 +35,4 @@ docker run --rm -p 8080:8080 -e "JDBC_URL=jdbc:postgresql://host.docker.internal
 
 ![image](https://user-images.githubusercontent.com/106908/106778481-5fdffe80-6689-11eb-9cf4-8a294ce5c7d0.png)
 
-# original source & credit : https://github.com/making/hello-tanzu
+original source & credit : https://github.com/making/hello-tanzu
